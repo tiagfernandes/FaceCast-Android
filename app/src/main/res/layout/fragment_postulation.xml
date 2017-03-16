@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.btssio.slam.facecast2.fragments.PostulationFragment">
+
+
+    <TextView
+        android:id="@+id/nomEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="28dp"
+        android:text="Nom Event" />
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nomEvent"
+        android:layout_alignStart="@+id/nomEvent"
+        android:layout_below="@+id/nomEvent"
+        android:layout_marginTop="17dp"
+        android:text="Type" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/nomEvent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        android:text="Date" />
+
+    <TextView
+        android:id="@+id/nbJours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/type"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="35dp"
+        android:layout_marginRight="35dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/nomRole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/type"
+        android:layout_alignStart="@+id/type"
+        android:layout_below="@+id/type"
+        android:layout_marginTop="79dp"
+        android:text="nom role" />
+
+    <TextView
+        android:id="@+id/nbRoles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="nombre role"
+        android:layout_alignBaseline="@+id/nomRole"
+        android:layout_alignBottom="@+id/nomRole"
+        android:layout_alignRight="@+id/nbJours"
+        android:layout_alignEnd="@+id/nbJours" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Envoyer demande"
+        android:layout_below="@+id/editMail"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/editMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:ems="10"
+        android:hint="Entrez votre mail"
+        android:inputType="textEmailAddress"
+        android:layout_below="@+id/nomRole"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
