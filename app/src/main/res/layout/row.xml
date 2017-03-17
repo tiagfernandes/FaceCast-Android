@@ -15,9 +15,9 @@
         android:layout_marginStart="15dip"
         android:maxLines="1"
         android:text="@string/nom"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="?attr/colorPrimaryDark"
         android:textSize="20sp"
-        android:textStyle="bold" >
+        android:textStyle="bold">
 
     </TextView>
 
@@ -25,43 +25,64 @@
         android:id="@+id/type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nom"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/nom"
+        android:layout_marginTop="30dp"
         android:maxLines="1"
         android:text="@string/type"
         android:textColor="@android:color/black"
         android:textSize="14sp"
-        android:layout_marginTop="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/nom"
-        android:layout_alignStart="@+id/nom">
-    </TextView>
+        android:textStyle="bold"></TextView>
 
     <TextView
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/nom"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
         android:maxLines="1"
         android:text="@string/date"
         android:textColor="@android:color/black"
         android:textSize="14sp"
-        android:layout_alignBottom="@+id/nom"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="28dp"
-        android:layout_marginEnd="28dp">
-    </TextView>
+        android:textStyle="bold"></TextView>
 
     <TextView
         android:id="@+id/nombreJours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/type"
+        android:layout_alignBottom="@+id/type"
+        android:layout_alignEnd="@+id/date"
+        android:layout_alignRight="@+id/date"
         android:maxLines="1"
         android:text="@string/nombreJours"
         android:textColor="@android:color/black"
         android:textSize="14sp"
-        android:layout_alignBaseline="@+id/type"
-        android:layout_alignBottom="@+id/type"
-        android:layout_alignRight="@+id/date"
-        android:layout_alignEnd="@+id/date">
-    </TextView>
+        android:textStyle="bold"></TextView>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/date"
+        android:layout_toLeftOf="@+id/date"
+        android:layout_toStartOf="@+id/date"
+        android:text="Date : "
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/nombreJours"
+        android:layout_toLeftOf="@+id/nombreJours"
+        android:layout_toStartOf="@+id/nombreJours"
+        android:text="Nombre de jours : "
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
 
 </RelativeLayout>

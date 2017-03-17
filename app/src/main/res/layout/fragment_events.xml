@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,6 +10,22 @@
     <ListView
         android:id="@+id/list"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="562dp" >
     </ListView>
-</FrameLayout>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="9dp"
+        android:text="Les évènements"
+        android:textAlignment="center"
+        android:textColor="?android:attr/textColorTertiary"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

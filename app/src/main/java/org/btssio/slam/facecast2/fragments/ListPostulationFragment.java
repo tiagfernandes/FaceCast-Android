@@ -137,7 +137,6 @@ public class ListPostulationFragment extends Fragment implements View.OnClickLis
     public void onClick(View v) {
         if(button == v){
             String mail = editText.getText().toString();
-            Toast.makeText(getActivity(), "Ok" , Toast.LENGTH_SHORT).show();
             sendRequest(mail);
         }
     }
