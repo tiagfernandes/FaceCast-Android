@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
 public class EventsFragment extends Fragment implements AdapterView.OnItemClickListener {
 
-    public static final String SERVER_URL = "http:192.168.43.98:3000/android/events";
+    public static final String SERVER_URL = "http://192.168.43.98:3000/android/events";
     private JSONObject jsonResponse;
     private ArrayList<Event> items;
     private ListView lv;
@@ -78,6 +78,7 @@ public class EventsFragment extends Fragment implements AdapterView.OnItemClickL
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Log.e("Error : ", ""+error);
                         Toast.makeText(getActivity(), " " + error, Toast.LENGTH_SHORT).show();
                     }
                 });

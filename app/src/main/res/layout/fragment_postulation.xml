@@ -22,11 +22,10 @@
         android:id="@+id/nomEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/nomEvent"
-        android:layout_alignBottom="@+id/nomEvent"
-        android:layout_toEndOf="@+id/nomEvent"
-        android:layout_toRightOf="@+id/nomEvent"
-        android:text="Nom Event"
+        android:layout_alignBaseline="@+id/textView7"
+        android:layout_alignBottom="@+id/textView7"
+        android:layout_toEndOf="@+id/textView7"
+        android:layout_toRightOf="@+id/textView7"
         android:textColor="@android:color/black"
         android:textStyle="bold" />
 
@@ -34,11 +33,10 @@
         android:id="@+id/type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/nomEvent"
-        android:layout_alignStart="@+id/nomEvent"
-        android:layout_below="@+id/nomEvent"
-        android:layout_marginTop="17dp"
-        android:text="Type"
+        android:layout_alignLeft="@+id/textView7"
+        android:layout_alignStart="@+id/textView7"
+        android:layout_below="@+id/textView7"
+        android:layout_marginTop="19dp"
         android:textColor="@android:color/black"
         android:textStyle="bold" />
 
@@ -52,7 +50,6 @@
         android:layout_alignRight="@+id/nbJours"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Date"
         android:textColor="@android:color/background_dark"
         android:textStyle="bold" />
 
@@ -65,7 +62,6 @@
         android:layout_alignParentRight="true"
         android:layout_marginEnd="35dp"
         android:layout_marginRight="35dp"
-        android:text="TextView"
         android:textColor="@android:color/black"
         android:textStyle="bold" />
 
@@ -73,21 +69,23 @@
         android:id="@+id/nomRole"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="nom role"
-        android:layout_below="@+id/type"
-        android:layout_alignLeft="@+id/type"
-        android:layout_alignStart="@+id/type" />
+        android:layout_alignBaseline="@+id/textView9"
+        android:layout_alignBottom="@+id/textView9"
+        android:layout_toEndOf="@+id/textView9"
+        android:layout_toRightOf="@+id/textView9"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/nbRoles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="nombre role"
         android:layout_alignBaseline="@+id/nomRole"
         android:layout_alignBottom="@+id/nomRole"
+        android:layout_alignEnd="@+id/nbJours"
         android:layout_alignRight="@+id/nbJours"
-        android:layout_alignEnd="@+id/nbJours" />
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/button"
@@ -127,6 +125,27 @@
         android:layout_toLeftOf="@+id/nbJours"
         android:layout_toStartOf="@+id/nbJours"
         android:text="Nombre de jours : "
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/type"
+        android:layout_alignStart="@+id/type"
+        android:layout_below="@+id/type"
+        android:layout_marginTop="24dp"
+        android:text="Rôle : "
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editMail"
+        android:layout_toLeftOf="@+id/nbRoles"
+        android:layout_toStartOf="@+id/nbRoles"
+        android:text="Nombre de rôle proposé : "
         android:textColor="@android:color/black" />
 
 </RelativeLayout>

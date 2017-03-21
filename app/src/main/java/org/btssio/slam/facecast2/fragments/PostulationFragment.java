@@ -82,14 +82,13 @@ public class PostulationFragment extends Fragment implements View.OnClickListene
         eventRepo = new EventRepository(getActivity().getApplicationContext());
 
         // Verification de l'existence d'un flux
-        if (eventRepo.isEventConfigured()) {
+        if (eventRepo.isOffreConfigured()) {
             leOffre = eventRepo.getOffre();
-            Log.e("Id offre", ""+leOffre);
         } else {
             Toast.makeText(getActivity(), "Pas trouvé", Toast.LENGTH_SHORT).show();
         }
 
-        SERVER_URL = "http:192.168.43.98:3000/android/offre/"+leOffre;
+        SERVER_URL = "http://192.168.43.98:3000/android/offre/"+leOffre;
 
         StringRequest stringRequest = new StringRequest(SERVER_URL,
                 new Response.Listener<String>() {
@@ -139,7 +138,7 @@ public class PostulationFragment extends Fragment implements View.OnClickListene
         if(v == button) {
             String email = editText.getText().toString();
             if (email != null) {
-                String URL = "http:192.168.43.98:3000/android/postule/"+leOffre+"/"+email;
+                String URL = "http://192.168.43.98:3000/android/postule/"+leOffre+"/"+email;
 
                 StringRequest stringRequest = new StringRequest(URL,
                         new Response.Listener<String>() {

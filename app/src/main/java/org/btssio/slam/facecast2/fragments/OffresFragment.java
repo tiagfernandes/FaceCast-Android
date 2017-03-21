@@ -79,7 +79,7 @@ public class OffresFragment extends Fragment implements AdapterView.OnItemClickL
             //Toast
         }
 
-        SERVER_URL = "http:192.168.43.98:3000/android/event/"+leEvent+"/offre";
+        SERVER_URL = "http://192.168.43.98:3000/android/event/"+leEvent+"/offre";
 
         StringRequest stringRequest = new StringRequest(SERVER_URL,
                 new Response.Listener<String>() {

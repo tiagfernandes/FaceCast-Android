@@ -60,8 +60,8 @@ public class ListPostulationFragment extends Fragment implements View.OnClickLis
         return v;
     }
 
-    private void sendRequest(String url) {
-        String SERVER_URL = "http:192.168.43.98:3000/android/postu/"+url;
+    private void sendRequest(String mail) {
+        String SERVER_URL = "http://192.168.43.98:3000/android/postu/"+mail;
 
         StringRequest stringRequest = new StringRequest(SERVER_URL,
                 new Response.Listener<String>() {
@@ -103,6 +103,7 @@ public class ListPostulationFragment extends Fragment implements View.OnClickLis
                 // Récupération de l'item qui nous intéresse
                 String id = jsonObj.getString("_id");
                 String etat = jsonObj.getString("etat");
+
                 String nbRoles = offre.getString("nbRoles");
 
                 String nomEvent = event.getString("nom");
