@@ -29,6 +29,7 @@ public class PostulationFragment extends Fragment implements View.OnClickListene
     private JSONObject jsonResponse;
     private EventRepository eventRepo;
     private String leOffre;
+    private String url;
 
     TextView tvNomEvent;
     TextView tvType;
@@ -55,6 +56,9 @@ public class PostulationFragment extends Fragment implements View.OnClickListene
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_postulation, container, false);
+
+        eventRepo = new EventRepository(getActivity().getApplicationContext());
+        url = eventRepo.getUrl().toString();
 
         tvNomEvent = (TextView) v.findViewById(R.id.nomEvent);
         tvType = (TextView) v.findViewById(R.id.type);
@@ -88,7 +92,7 @@ public class PostulationFragment extends Fragment implements View.OnClickListene
             Toast.makeText(getActivity(), "Pas trouvé", Toast.LENGTH_SHORT).show();
         }
 
-        SERVER_URL = "http://192.168.43.98:3000/android/offre/"+leOffre;
+        SERVER_URL = url + "/android/offre/" + leOffre;
 
         StringRequest stringRequest = new StringRequest(SERVER_URL,
                 new Response.Listener<String>() {
@@ -138,7 +142,7 @@ public class PostulationFragment extends Fragment implements View.OnClickListene
         if(v == button) {
             String email = editText.getText().toString();
             if (email != null) {
-                String URL = "http://192.168.43.98:3000/android/postule/"+leOffre+"/"+email;
+                String URL = url + "/android/postule/" + leOffre + "/"+email;
 
                 StringRequest stringRequest = new StringRequest(URL,
                         new Response.Listener<String>() {

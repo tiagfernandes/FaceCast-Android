@@ -30,13 +30,14 @@ import java.util.ArrayList;
 
 public class EventsFragment extends Fragment implements AdapterView.OnItemClickListener {
 
-    public static final String SERVER_URL = "http://192.168.43.98:3000/android/events";
+    public static String SERVER_URL ;
     private JSONObject jsonResponse;
     private ArrayList<Event> items;
     private ListView lv;
 
     private EventRepository eventRepo;
     private String leEvent;
+    private String url;
 
     public EventsFragment() {
         // Required empty public constructor
@@ -54,6 +55,9 @@ public class EventsFragment extends Fragment implements AdapterView.OnItemClickL
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_events, container, false);
 
+        eventRepo = new EventRepository(getActivity().getApplicationContext());
+        url = eventRepo.getUrl().toString();
+
         lv = (ListView) v.findViewById(R.id.list);
         items = new ArrayList<Event>();
         lv.setOnItemClickListener(this);
@@ -66,7 +70,10 @@ public class EventsFragment extends Fragment implements AdapterView.OnItemClickL
         sendRequest();
     }
 
+    //Méthode pour interoger le serveur par http
     private void sendRequest() {
+        SERVER_URL = url + "/android/events";
+
         StringRequest stringRequest = new StringRequest(SERVER_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -100,9 +107,6 @@ public class EventsFragment extends Fragment implements AdapterView.OnItemClickL
                 // Création d'un tableau élément à  partir d'un JSONObject
                 JSONObject jsonObj = jsonArray.getJSONObject(i);
 
-                // Récupération à partir d'un JSONObject nommé
-                //JSONObject fields  = jsonObj.getJSONObject("fields");
-
                 // Récupération de l'item qui nous intéresse
                 String id = jsonObj.getString("_id");
                 String nom = jsonObj.getString("nom");
@@ -129,11 +133,13 @@ public class EventsFragment extends Fragment implements AdapterView.OnItemClickL
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-        eventRepo = new EventRepository(getActivity().getApplicationContext());
 
+        //Innitialise le repository pour enregistrer au seins de l'application l'id de
+        // l'evenement choisis pour le recuperer dans un autre fragment
         leEvent = items.get(position).getId().toString();
         eventRepo.setEvent(leEvent);
 
+        //"Controlleur" de fragment qui change le fragment choisis
         Fragment fragment = new OffresFragment();
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).addToBackStack(null).commit();

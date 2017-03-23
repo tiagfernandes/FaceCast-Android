@@ -15,8 +15,12 @@ import android.view.MenuItem;
 import org.btssio.slam.facecast2.fragments.AccueilFragment;
 import org.btssio.slam.facecast2.fragments.EventsFragment;
 import org.btssio.slam.facecast2.fragments.ListPostulationFragment;
+import org.btssio.slam.facecast2.repository.EventRepository;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private EventRepository eventRepo;
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +38,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        Fragment fragment = new AccueilFragment();
+        eventRepo = new EventRepository(this);
+        //Innitialise le repository pour enregistrer au seins de l'application l'url du serveur
+        url = "http://192.168.1.138:3000";
+        eventRepo.setUrl(url);
 
+        //Innitialise un fragment "Acceuil" qui apparait dès l'ouverture de l'applications
+        Fragment fragment = new AccueilFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
     }
@@ -79,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         Fragment fragment = null;
 
+        //Menu navigation
         if (id == R.id.nav_events) {
             // Handle the camera action
             fragment = new EventsFragment();
@@ -90,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
         if (fragment != null) {
+            //"Controlleur" de fragment qui change le fragment choisis
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
         }

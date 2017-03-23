@@ -31,6 +31,15 @@ public class EventRepository extends Repository {
 		prefsEditor.commit();
 	}
 
+	// Enregistre l url dans les SharedPreferences
+	public void setUrl(String url) {
+		SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(Repository.context);
+		Editor prefsEditor = appSharedPrefs.edit();
+
+		prefsEditor.putString("URL",url);
+		prefsEditor.commit();
+	}
+
 	// Supprime l'évènement
 	public void unsetEvent() {
 		SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(Repository.context);
@@ -83,5 +92,11 @@ public class EventRepository extends Repository {
 	public String getOffre()	{
 		SharedPreferences app = PreferenceManager.getDefaultSharedPreferences(Repository.context);
 		return app.getString("OFFRE", "");
+	}
+
+	// Recupere l'url de l'utilisateur
+	public String getUrl()	{
+		SharedPreferences app = PreferenceManager.getDefaultSharedPreferences(Repository.context);
+		return app.getString("URL", "");
 	}
 }

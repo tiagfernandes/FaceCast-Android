@@ -37,6 +37,7 @@ public class OffresFragment extends Fragment implements AdapterView.OnItemClickL
     private ListView lv;
     private EventRepository eventRepo;
     private String leEvent;
+    private String url;
 
     public OffresFragment() {
         // Required empty public constructor
@@ -51,9 +52,10 @@ public class OffresFragment extends Fragment implements AdapterView.OnItemClickL
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        eventRepo = new EventRepository(getActivity().getApplicationContext());
-
         View v = inflater.inflate(R.layout.fragment_offres, container, false);
+
+        eventRepo = new EventRepository(getActivity().getApplicationContext());
+        url = eventRepo.getUrl().toString();
 
         lv = (ListView) v.findViewById(R.id.list);
         items = new ArrayList<Offre>();
@@ -67,8 +69,8 @@ public class OffresFragment extends Fragment implements AdapterView.OnItemClickL
         sendRequest();
     }
 
+    //Méthode pour interoger le serveur par http
     private void sendRequest() {
-
         // Creation de l'objet Flux lie a l'utilisateur avec passage du contexte
         eventRepo = new EventRepository(getActivity().getApplicationContext());
 
@@ -76,10 +78,10 @@ public class OffresFragment extends Fragment implements AdapterView.OnItemClickL
         if (eventRepo.isEventConfigured()) {
             leEvent = eventRepo.getEvent();
         } else {
-            //Toast
+            Toast.makeText(getActivity(), "Error id ListView", Toast.LENGTH_SHORT).show();
         }
 
-        SERVER_URL = "http://192.168.43.98:3000/android/event/"+leEvent+"/offre";
+        SERVER_URL = url + "/android/event/" + leEvent + "/offre";
 
         StringRequest stringRequest = new StringRequest(SERVER_URL,
                 new Response.Listener<String>() {
@@ -139,12 +141,13 @@ public class OffresFragment extends Fragment implements AdapterView.OnItemClickL
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         eventRepo = new EventRepository(getActivity().getApplicationContext());
-
+        //Innitialise le repository pour enregistrer au seins de l'application l'id de
+        // l'evenement choisis pour le recuperer dans un autre fragment
         String leOffre = items.get(position).getId().toString();
         eventRepo.setOffre(leOffre);
 
         Fragment fragment = new PostulationFragment();
-
+        //"Controlleur" de fragment qui change le fragment choisis
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).addToBackStack(null).commit();
     }
