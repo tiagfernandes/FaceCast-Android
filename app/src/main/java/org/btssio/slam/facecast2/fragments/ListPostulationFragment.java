@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -75,7 +76,7 @@ public class ListPostulationFragment extends Fragment implements View.OnClickLis
     private void sendRequest(String mail) {
         String SERVER_URL = url + "/android/postu/" + mail;
 
-        StringRequest stringRequest = new StringRequest(SERVER_URL,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, SERVER_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -170,7 +171,7 @@ public class ListPostulationFragment extends Fragment implements View.OnClickLis
                     public void onClick(DialogInterface dialog, int which) {
                         SERVER_URL = url + "/android/postulation/" + items.get(i).getId() + "/delete";
 
-                        StringRequest stringRequest = new StringRequest(SERVER_URL,
+                        StringRequest stringRequest = new StringRequest(Request.Method.DELETE, SERVER_URL,
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
