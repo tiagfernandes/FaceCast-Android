@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -142,9 +143,9 @@ public class PostulationFragment extends Fragment implements View.OnClickListene
         if(v == button) {
             String email = editText.getText().toString();
             if (email != null) {
-                String URL = url + "/android/postule/" + leOffre + "/"+email;
+                String SERVER_URL = url + "/android/postule/" + leOffre + "/"+email;
 
-                StringRequest stringRequest = new StringRequest(URL,
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, SERVER_URL,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
